@@ -1,0 +1,5 @@
+pandas>=1.5.0
+numpy>=1.23.0
+pyarrow>=12.0.0
+pyyaml>=6.0
+nautilus-trader>=1.180.0

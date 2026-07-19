@@ -1,0 +1,68 @@
+strategy:
+  instrument_id: "EURUSD.SIM"
+  bar_type_4h: "EURUSD.SIM-4-HOUR-LAST-EXTERNAL"
+  bar_type_1h: "EURUSD.SIM-1-HOUR-LAST-EXTERNAL"
+  bar_type_15m: "EURUSD.SIM-15-MINUTE-LAST-EXTERNAL"
+  bar_type_5m: "EURUSD.SIM-5-MINUTE-LAST-EXTERNAL"
+
+  risk_per_trade_pct: 0.5
+  stop_atr_mult: 1.5
+  take_profit_rr: 2.0
+  trail_start_atr_mult: 1.0
+  entry_score_threshold: 75.0
+
+  weights:
+    sweep: 30
+    fvg: 20
+    avwap: 20
+    volume_profile: 15
+    trend: 10
+    volume: 5
+
+  market_structure:
+    ema_fast: 50
+    ema_slow: 200
+    adx_period: 14
+    adx_threshold: 20.0
+    swing_lookback: 5
+
+  liquidity_sweep:
+    lookback: 20
+    weight: 30.0
+
+  fvg:
+    min_size_atr_mult: 0.25
+    retrace_low: 0.30
+    retrace_high: 0.70
+    weight: 20.0
+
+  avwap:
+    max_distance_atr_mult: 0.5
+    weight: 20.0
+
+  volume_profile:
+    rolling_bars: 96
+    bins: 60
+    value_area_pct: 0.70
+    near_atr_mult: 0.25
+    weight: 15.0
+
+  atr_volume:
+    atr_period: 14
+    atr_sma_period: 14
+    volume_sma_period: 20
+    atr_weight: 5.0
+    volume_weight: 10.0
+
+# Optimization grid (for walk-forward / grid-search tooling, not consumed
+# directly by NautilusTrader - use with your own optimizer harness).
+optimization_grid:
+  ema_fast: [20, 50]
+  ema_slow: [100, 200]
+  atr_period: [10, 14, 20]
+  fvg_min_size_atr: [0.15, 0.25, 0.4]
+  sweep_lookback: [15, 20, 30]
+  profile_bins: [40, 60, 80]
+  hvn_distance_atr: [0.1, 0.2]
+  entry_score: [70, 75, 80, 85]
+  risk_reward: [1.5, 2, 2.5, 3]
